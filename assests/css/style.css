@@ -1,0 +1,303 @@
+/* General Styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.carousel-img {
+    max-height: 600px;
+    object-fit: cover;
+}
+
+
+.countdown-text p {
+    font-size: 1.2rem;
+}
+
+.countdown-text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.countdown-item {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.countdown-number {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.text-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.text-section ul {
+    padding-left: 20px;
+}
+
+.text-section ul li {
+    margin: 10px 0;
+}
+
+/* About Us section image */
+.Img-Section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Mobile and Tablet Responsiveness */
+@media (max-width: 768px) {
+    .countdown-box {
+        padding: 30px;
+    }
+
+    .countdown-item {
+        margin: 10px 0;
+    }
+
+    .countdown-text h2 {
+        font-size: 2rem;
+    }
+
+    .carousel-img {
+        max-height: 400px;
+    }
+
+    .Img-Section img {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Ensure the video fills the entire container */
+/* Make sure the parent container fills the width */
+.Img-Section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Make the video fill the container */
+.Img-Section video {
+    width: 100%;
+    height: auto;
+}
+
+/* Overlay content that will sit on top of the video */
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10; /* Ensure it is above the video */
+}
+
+/* Style the heading */
+.overlay-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Style the paragraph */
+.overlay-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Style the button */
+.overlay-content .btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+
+/* Optional: Add hover effect to the button */
+.overlay-content .btn:hover {
+    background-color: #f9488b; /* Example hover color */
+    border-color: #f9488b;
+}
+
+/******nav*******/
+/* photo  Styling */
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #495057;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 30px 0;
+}
+.img-fluid{
+    width: 100%;
+    height: 600px;
+}
+
+
+/* our shedule **/
+/* Container and general layout */
+.container {
+    margin-top: 20px;
+}
+
+/* Title styling */
+h1 {
+    font-size: 2.5rem;
+    color: #343a40;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+/* Box container styling */
+.maindiv {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.box {
+    background-color: #f8f9fa;
+}
+
+/* Align icons and text */
+i {
+    color: #007bff;
+    margin-right: 10px;
+}
+
+/* Image styling */
+.rounded-circle {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Margin for spacing inside the box */
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+/* Box border and padding for the main card */
+.maindiv.box {
+    border: 2px solid #007bff;
+    padding: 30px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+/* Center everything in the container */
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/**count down desing**/
+/* Overall container styling */
+.container {
+    margin-top: 30px;
+}
+
+/* Countdown Box */
+.countdown-box {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Countdown Text Styling */
+.countdown-text {
+    margin-bottom: 20px;
+}
+
+.countdown-text p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.countdown-text h2 {
+    font-size: 2rem;
+    color: #343a40;
+    font-weight: bold;
+}
+
+/* Countdown Timer Item Styling */
+.countdown-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-label {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.countdown-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 768px) {
+    .countdown-item {
+        margin-bottom: 10px;
+    }
+}
+
+/***compyright****/
