@@ -1,16 +1,5 @@
-<?php include('config/function.php');?>
-<?php include('config/config.php'); ?>
 
 
-
-<?php
-if(isset($_POST['update'])){
-  $editName = $_POST['name'];
-  $editEmail = $_POST['email'];
-  $editContact = $_POST['contact'];
-  $editadress = $_POST['address'];
-}
-?>
     <style>
         .modal-content {
             border-radius: 10px;
@@ -54,23 +43,18 @@ if(isset($_POST['update'])){
 
 
 
+
+ <!--Login-->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Fill the Booking Form</h5>
+        <h5 class="modal-title" id="myModalLabel">GET LOGIN </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <!-- Form inside modal -->
         <form id="bookingForm" method="POST" novalidat enctype="multipart/form-data">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-            <div class="invalid-feedback">
-              Please enter your name.
-            </div>
-          </div>
 
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -81,35 +65,20 @@ if(isset($_POST['update'])){
           </div>
 
           <div class="mb-3">
-            <label for="contact" class="form-label">Contact</label>
-            <input type="tel" class="form-control" id="contact" name="contact" placeholder="Enter your contact number" required>
-            <div class="invalid-feedback">
-              Please enter your contact number.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="address" class="form-label">Current Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
-            <div class="invalid-feedback">
-              Please enter your current address.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="idCard" class="form-label">Attached ID Card</label><br>
+            <label for="idCard" class="form-label">Password</label><br>
             <div class="file-input-container">
-              <input type="file" class="form-control" name="file" id="idCard" required>
+              <input type="password" class="form-control" name="password" id="password" required>
             </div>
             <div class="invalid-feedback">
-              Please attach your ID card.
+              Please Enter Password.
             </div>
           </div>
 
-          <div class="modal-footer">
+          <div class="modal-footer text-center">
             <button type="submit" name="submit" class="btn btn-primary text-left">Submit</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
+            <a href="../MyConcert/auth/register.php">SignUp</a>
         </form>
       </div>
     </div>
@@ -117,76 +86,6 @@ if(isset($_POST['update'])){
 </div>
 
 
-
-      <!--***Edit Model-->
-      <?php 
-      @$email =$_SESSION['user_email'];
-      $Log_userId = "SELECT * FROM users where Email = '$email' ";
-      $result = $conn->query($Log_userId);
-
-      if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-             $Name = $row['Name'];
-             $Email = $row['Email'];
-             $Contact = $row['Contact'];
-             $Address = $row['Address'];
-        }
-    } 
-          ?>
-
-    <div class="modal fade" id="EditModel" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="myModalLabel">Update Your Data </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <!-- Form inside modal -->
-            <form id="bookingForm" method="POST" novalidat enctype="multipart/form-data">
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="<?php echo $Name ;?>" required >
-                <div class="invalid-feedback">
-                  Please enter your name.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" value="<?php echo $Email ;?>" required>
-                <div class="invalid-feedback">
-                  Please enter a valid email address.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="contact" class="form-label">Contact</label>
-                <input type="tel" class="form-control" id="contact" name="contact" placeholder="Enter your contact number" value="<?php echo $Contact; ?>" required>
-                <div class="invalid-feedback">
-                  Please enter your contact number.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="address" class="form-label">Current Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" value="<?php echo $Address?>" required>
-                <div class="invalid-feedback">
-                  Please enter your current address.
-                </div>
-              </div>
-              <div class="modal-footer">
-                <input type="hidden" id="EditID" name="hiddenId">
-                <button type="button" name="update" id="update" class="btn btn-primary text-left">Update</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
          
 
 

@@ -151,22 +151,7 @@
     <ul class="navbar-nav">
         <li class="nav-item font-weight-bold text-dark">
             <a class="nav-link text-dark" href="index.php">Home</a>
-        </li>
-        <li class="nav-item  font-weight-bold text-dark">
-            <a class="nav-link text-dark" href="about.php">About</a>
-        </li>
-        <li class="nav-item  font-weight-bold text-dark">
-            <a class="nav-link text-dark" href="contact.php">Contact Us</a>
-        </li>
-        <li class="nav-item  font-weight-bold text-dark">
-            <a class="nav-link text-dark" href="Event.php">Events</a>
-        </li>
-        <li class="nav-item  font-weight-bold text-dark">
-            <a class="nav-link text-dark" href="blog.php">Blog</a>
-        </li>
-        <li class="nav-item  font-weight-bold text-dark">
-            <a class="nav-link text-dark" href="faq.php">FAQ</a>
-        </li>
+    
     </ul>
 </div>
 
