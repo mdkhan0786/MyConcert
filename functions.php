@@ -7,9 +7,8 @@ if (isset($_POST['Submit'])) {
     $email    = $_POST['email'];
     $contact  = $_POST['contact'];
     $password = $_POST['password'];
-
-    // $_SESSION['useEmail'] = $name;
-
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+     
     // Check if email already exists
     $checkEmail = "SELECT * FROM users WHERE Email = '$email'";
     $result = mysqli_query($conn, $checkEmail);
@@ -19,7 +18,7 @@ if (isset($_POST['Submit'])) {
     } else {
         // Insert new user
         $insert = "INSERT INTO users (Name, Email, Contact, Password) 
-                   VALUES ('$name','$email','$contact','$password')";
+                   VALUES ('$name','$email','$contact','$hashedPassword')";
         $stmtInsert = mysqli_query($conn, $insert);
 
         if ($stmtInsert) {
@@ -32,28 +31,39 @@ if (isset($_POST['Submit'])) {
     mysqli_close($conn);
 }
 
-//Login here 
+
+// Check if the login form was submitted
 
 if (isset($_POST['Login'])) {
-    $lemail    = $_POST['Lemail'];
+    // Get and sanitize input
+    $lemail = trim($_POST['Lemail']);
     $lpassword = $_POST['Lpassword'];
 
-    $_SESSION['useEmail'] = $email;
+    // Escape input to prevent SQL injection (basic protection)
+    $lemail = mysqli_real_escape_string($conn, $lemail);
 
-    // Check if email already exists
-    $login = "SELECT * FROM users WHERE Email = '$lemail' and Password = '$lpassword'";
-    $result = mysqli_query($conn, $checkEmail);
+    // Run SQL query
+    $query = "SELECT * FROM users WHERE Email = '$lemail'";
+    $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
-        header('Location /Event.php')
-        exit();
-        
+        $user = mysqli_fetch_assoc($result);
+
+        // Verify password (assuming it's hashed)
+        if (password_verify($lpassword, $user['Password'])) {
+            $_SESSION['useEmail'] = $user['Email'];
+            header('Location: /Event.php');
+            exit();
+        } else {
+            echo "Invalid password.";
+        }
     } else {
-       echo "eroor";
-       
+        echo "No account found with that email.";
     }
 
     mysqli_close($conn);
+
+
 }
 ?>
 

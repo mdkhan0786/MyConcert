@@ -1,6 +1,5 @@
-
-
-    <style>
+<?php include __DIR__ . '/../functions.php'; ?>    
+   <style>
         .modal-content {
             border-radius: 10px;
         }
@@ -53,34 +52,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- Form inside modal -->
-        <form id="bookingForm" method="POST" novalidat enctype="multipart/form-data">
 
-          <div class="mb-3">
+        <form method="POST" novalidat enctype="multipart/form-data">
+            <h4 class="text-center"> Login Here</h4>
+            <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-            <div class="invalid-feedback">
-              Please enter a valid email address.
+            <input type="email" class="form-control"  name="Lemail" placeholder="Enter your email" required>
             </div>
-          </div>
 
-          <div class="mb-3">
-            <label for="idCard" class="form-label">Password</label><br>
-            <div class="file-input-container">
-              <input type="password" class="form-control" name="password" id="password" required>
+            <div class="mb-3">
+            <label for="address" class="form-label">Password</label>
+            <input type="password" class="form-control"  name="Lpassword" placeholder="Enter your Password" required>
             </div>
-            <div class="invalid-feedback">
-              Please Enter Password.
-            </div>
-          </div>
-
-          <div class="modal-footer text-center">
-            <button type="submit" name="submit" class="btn btn-primary text-left">Submit</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+            <div class="modal-footer text-center"  style="text-align:center;">
+            <input type="submit" name="Login" class="btn btn-primary text-center" value="Register">
+            <br>
             <a href="../MyConcert/auth/register.php">SignUp</a>
+            </div>
         </form>
       </div>
+
     </div>
   </div>
 </div>
