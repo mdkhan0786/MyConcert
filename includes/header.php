@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
  <link rel="stylesheet" src="/assests/css/style.css">
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
- <script src="assests/js/main.js"> </script>
+ <!-- <script src="assests/js/main.js"> </script> -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
  <style>
@@ -150,7 +150,8 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
     <ul class="navbar-nav">
         <li class="nav-item font-weight-bold text-dark">
-            <a class="nav-link text-dark" href="index.php">Home</a>
+            <a class="nav-link text-dark" href="../index.php">Home</a>
+        </li>
     
     </ul>
 </div>
