@@ -1,11 +1,15 @@
-<?php
- // Must be enabled for sessions
-include "config/config.php"; // Ensure this file defines $conn
+<?php// Must be enabled for sessions
+require_once __DIR__ ."/config/config.php";
+require_once __DIR__ ."/includes/model.php";
+require_once __DIR__ ."/includes/header.php";
+require_once __DIR__ ."/auth/login.php";
+// require_once __DIR__ ."/auth/register.php";
+include "auth/register.php";
 
 if (isset($_POST['Submit'])) {
-    $name     = $_POST['name'];
-    $email    = $_POST['email'];
-    $contact  = $_POST['contact'];
+    $name = trim($_POST['name']);
+    $email = strtolower(trim($_POST['email']));
+    $contact = trim($_POST['contact']);
     $password = $_POST['password'];
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
      
@@ -32,8 +36,6 @@ if (isset($_POST['Submit'])) {
 }
 
 
-// Check if the login form was submitted
-
 if (isset($_POST['Login'])) {
     // Get and sanitize input
     $lemail = trim($_POST['Lemail']);
@@ -52,7 +54,7 @@ if (isset($_POST['Login'])) {
         // Verify password (assuming it's hashed)
         if (password_verify($lpassword, $user['Password'])) {
             $_SESSION['useEmail'] = $user['Email'];
-            header('Location: /Event.php');
+            header('Location: auth/event.php');
             exit();
         } else {
             echo "Invalid password.";
