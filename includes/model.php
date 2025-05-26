@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../functions.php'; ?>    
+  
    <style>
         .modal-content {
             border-radius: 10px;
@@ -65,7 +65,7 @@
             <input type="password" class="form-control"  name="Lpassword" placeholder="Enter your Password" required>
             </div>
             <div class="modal-footer text-center"  style="text-align:center;">
-            <input type="submit" name="Login" class="btn btn-primary text-center" value="Register">
+            <input type="submit" name="Login" class="btn btn-primary text-center" value="Login">
             <br>
             <a href="../MyConcert/auth/register.php">SignUp</a>
             </div>

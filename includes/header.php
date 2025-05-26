@@ -1,4 +1,6 @@
-<?php include('model.php'); 
+<?php 
+session_start();
+include('model.php'); 
 
 ?>
 <!DOCTYPE html>
@@ -19,114 +21,114 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
  <style>
-  .navbar {
-    background-color: black; /* Set navbar background to black */
-}
+      .navbar {
+        background-color: black; /* Set navbar background to black */
+    }
 
-.navbar-nav .nav-link {
-    color: white; /* Set nav link text color to white */
-    font-weight: bold;
-    padding: 10px 15px;
-}
+    .navbar-nav .nav-link {
+        color: white; /* Set nav link text color to white */
+        font-weight: bold;
+        padding: 10px 15px;
+    }
 
-/* Hover effect for nav links */
-.navbar-nav .nav-link:hover {
-    color: white; /* Ensure the text stays white on hover */
-    text-decoration: underline; /* Underline text on hover */
-    text-decoration-color: red; /* Set underline color to red */
-}
+    /* Hover effect for nav links */
+    .navbar-nav .nav-link:hover {
+        color: white; /* Ensure the text stays white on hover */
+        text-decoration: underline; /* Underline text on hover */
+        text-decoration-color: red; /* Set underline color to red */
+    }
 
-/* Book Button Styling */
-.btn-primary {
-    background-color: red; /* Set button background to red */
-    border-color: red; /* Set border color to red */
-    color: white; /* Button text color */
-}
+    /* Book Button Styling */
+    .btn-primary {
+        background-color: red; /* Set button background to red */
+        border-color: red; /* Set border color to red */
+        color: white; /* Button text color */
+    }
 
-.nav-item:hover {
-    /* Darker red on hover */
-    border-color: #d32f2f;
-    color: white; /* Ensure button text color stays white */
-}
+    .nav-item:hover {
+        /* Darker red on hover */
+        border-color: #d32f2f;
+        color: white; /* Ensure button text color stays white */
+    }
 
-.btn-primary {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 12px 40px;
-    color: #ffffff;
-    text-align: center;
-    border-radius: 50px;
-    background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
-    background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
-    background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%);
-}
-
-
-.btn{
-  display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 20px;
-  
-    color: #ffffff;
-    text-align: center;
-    border-radius: 20px;
-    background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
-    background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
-    background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%)
-}
-
-.register{
-  display: inline-block;
-    font-size: 9px;
-    font-weight:bold ;
-    padding: 5px 10px;
-    color: #ffffff;
-    text-align: center;
-    border-radius: 10px;
-    background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
-    background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
-    background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%);
-
-}
+    .btn-primary {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 40px;
+        color: #ffffff;
+        text-align: center;
+        border-radius: 50px;
+        background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
+        background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
+        background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%);
+    }
 
 
-.Img-Section{
-  display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 12px 40px;
-    color: #ffffff;
-    text-align: center;
-    
-    background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
-    background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
-    background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%);
+    .btn{
+      display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 12px 20px;
+      
+        color: #ffffff;
+        text-align: center;
+        border-radius: 20px;
+        background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
+        background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
+        background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%)
+    }
+
+    .register{
+      display: inline-block;
+        font-size: 9px;
+        font-weight:bold ;
+        padding: 5px 10px;
+        color: #ffffff;
+        text-align: center;
+        border-radius: 10px;
+        background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
+        background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
+        background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%);
+
+    }
 
 
-}
+    .Img-Section{
+      display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 40px;
+        color: #ffffff;
+        text-align: center;
+        
+        background-image: -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b)), -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
+        background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%), -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
+        background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%), linear-gradient(to right, #ee8425 0%, #f9488b 100%);
 
 
-.countdown-item {
-  display: inline-block;
-    font-size : 25px;
-    font-weight : 600;
-    padding : 12px 40px;
-    text-align: center;
-    border-radius: 50px;
-    font-weight:bold;
-    box-sizing: border-box;
-}
+    }
 
-.about-Img{
-    width: 100%;
-    height: 500px;
-}
-//*********shedual section */
-.copyright{
-    text-align: center;
-}
+
+    .countdown-item {
+      display: inline-block;
+        font-size : 25px;
+        font-weight : 600;
+        padding : 12px 40px;
+        text-align: center;
+        border-radius: 50px;
+        font-weight:bold;
+        box-sizing: border-box;
+    }
+
+    .about-Img{
+        width: 100%;
+        height: 500px;
+    }
+    //*********shedual section */
+    .copyright{
+        text-align: center;
+    }
 
 
 
@@ -149,15 +151,24 @@
       <!-- Navbar links in the center -->
       <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
     <ul class="navbar-nav">
-        <li class="nav-item font-weight-bold text-dark">
-            <a class="nav-link text-dark" href="../index.php">Home</a>
-        </li>
-    
+      <li class="nav-item font-weight-bold text-dark">
+              <a class="nav-link text-dark" href="#">Home</a>
+            </li>
+
     </ul>
 </div>
+<?php if(isset($_SESSION['useEmail'])){?>
+         
+    <a class="btn btn-primary" class="btn btn-primary" href="#"><?php Welcome :  echo $_SESSION['useEmail']; ?></a>
+    
+    <a class="btn btn-primary"  class="btn btn-primary ml-3 p-5" href="logout.php">Logout</a>   
 
+     <?php }else{?>
+      <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary ml-3" href="#">Book Now</a>
+    <?php
+      }?> 
 <!-- Book button on the right -->
-<a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary ml-3" href="#">Book Now</a>
+
 
     </div>
   </nav>

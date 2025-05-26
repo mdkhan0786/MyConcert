@@ -1,6 +1,5 @@
 <?php 
 include __DIR__ . '/../includes/header.php'; 
-include __DIR__ . '/../functions.php'; 
 
 if (isset($_SESSION['registerMessage'])) {
     $message = $_SESSION['registerMessage'];
@@ -14,7 +13,7 @@ if (isset($_SESSION['registerMessage'])) {
     <script>
         $(document).ready(function() {
             setTimeout(function() {
-                window.location.href = "/index.php"; // adjust path if needed
+                window.location.href = "/../index.php"; // adjust path if needed
             }, 3000); // 3000 milliseconds = 3 seconds
         });
     </script>
@@ -58,6 +57,4 @@ if (isset($_SESSION['registerMessage'])) {
         </div>
     </form>
 </div>
-
-
 <?php include __DIR__ . '/../includes/footer.php';  ?>
