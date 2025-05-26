@@ -1,5 +1,35 @@
 <?php 
 include __DIR__ . '/../includes/header.php'; 
+include "../config/config.php";
+
+if (isset($_POST['Submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $Password = $_POST['password'];
+   
+    // Check if email already exists
+    $checkEmail = "SELECT * FROM users WHERE Email = '$email'";
+    $result = mysqli_query($conn, $checkEmail);
+
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['registerMessage'] = "Email already registered!";
+        exit();
+    } else {
+        // Insert new user
+        $insert = "INSERT INTO users (Name, Email, Contact, Password) 
+                   VALUES ('$name','$email','$contact','$Password')";
+        $stmtInsert = mysqli_query($conn, $insert);
+        if ($stmtInsert) {
+            $_SESSION['registerMessage'] = "Register Success!";
+        } else {
+            $_SESSION['registerMessage'] = "Error: " . mysqli_error($conn);
+        }
+    }
+    mysqli_close($conn);
+}
+
+
 
 if (isset($_SESSION['registerMessage'])) {
     $message = $_SESSION['registerMessage'];
@@ -13,7 +43,7 @@ if (isset($_SESSION['registerMessage'])) {
     <script>
         $(document).ready(function() {
             setTimeout(function() {
-                window.location.href = "/../index.php"; // adjust path if needed
+                window.location.href = "../index.php"; // adjust path if needed
             }, 3000); // 3000 milliseconds = 3 seconds
         });
     </script>

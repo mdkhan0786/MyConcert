@@ -1,5 +1,31 @@
+<?php
+include __DIR__."/../config/config.php";
+if (isset($_POST['Login'])) {
+
+  $lemail = $_POST['Lemail'];
+  $lpassword = $_POST['Lpassword'];
+  // Run SQL query
+  $query = "SELECT * FROM users WHERE Email = '$lemail' and Password = '$lpassword'";
   
-   <style>
+  $result = mysqli_query($conn, $query);
+  if (mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
+    if (password_verify($lpassword, $user['Password'])) {
+      $_SESSION['useEmail'] = $user['Email'];
+      header('Location: auth/event.php');
+      exit();
+    }else {
+        echo "Invalid password.";
+    }
+  }else {
+      echo "No account found with that email.";
+  }
+  mysqli_close($conn);
+}
+?> 
+ 
+ 
+ <style>
         .modal-content {
             border-radius: 10px;
         }
@@ -44,6 +70,8 @@
 
 
  <!--Login-->
+
+
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
