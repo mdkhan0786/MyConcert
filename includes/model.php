@@ -1,28 +1,40 @@
 <?php
 include __DIR__."/../config/config.php";
-if (isset($_POST['Login'])) {
+// $message = "";
+// $toastClass = "";
 
-  $lemail = $_POST['Lemail'];
-  $lpassword = $_POST['Lpassword'];
-  // Run SQL query
-  $query = "SELECT * FROM users WHERE Email = '$lemail' and Password = '$lpassword'";
-  
-  $result = mysqli_query($conn, $query);
-  if (mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
-    if (password_verify($lpassword, $user['Password'])) {
-      $_SESSION['useEmail'] = $user['Email'];
-      header('Location: auth/event.php');
-      exit();
-    }else {
-        echo "Invalid password.";
+if (isset($_POST['Login'])) {
+    $email = $_POST['Lemail'];
+    $password = $_POST['Lpassword'];
+    // Prepare and execute
+    $stmt = $conn->prepare("SELECT Password FROM users WHERE Email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($db_password);
+        $stmt->fetch();
+
+        if ($password === $db_password) {
+            // $message = "Login successful";
+            // $toastClass = "bg-success";
+            // Start the session and redirect to the dashboard or home page
+            session_start();
+            $_SESSION['useEmail'] = $email;
+            header("Location: ./auth/events.php");
+            exit();
+        } else {
+            $message = "Incorrect password";
+            $toastClass = "bg-danger";
+        }
+    } else {
+       echo "Email not Found";
     }
-  }else {
-      echo "No account found with that email.";
-  }
-  mysqli_close($conn);
+
+    $stmt->close();
+    $conn->close();
 }
-?> 
+?>
  
  
  <style>
