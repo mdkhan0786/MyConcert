@@ -1,3 +1,3 @@
-<a href="#" data-page="home">Home</a>
+<a href="#" data-page="adminHome">Home</a>
 <a href="#" data-page="users">Users</a>
-<a href="#" data-page="reports">Reports</a>
+<a href="#" data-page="report">Reports</a>
