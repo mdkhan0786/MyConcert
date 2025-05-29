@@ -29,8 +29,6 @@ if (isset($_POST['Submit'])) {
     mysqli_close($conn);
 }
 
-
-
 if (isset($_SESSION['registerMessage'])) {
     $message = $_SESSION['registerMessage'];
     unset($_SESSION['registerMessage']);
