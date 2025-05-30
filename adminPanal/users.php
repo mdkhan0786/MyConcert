@@ -7,10 +7,7 @@
     if ($conn->connect_error){
         die("connection Faild". $conn->connect_error);
     }
-
-   
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,10 +22,17 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             <!-- Bootstrap 4 CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
         <!-- jQuery and Bootstrap 4 JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+           <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+         <!-- Toastr CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <!-- jQuery (if not already included) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- Toastr JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     </head>
     <body class="sb-nav-fixed">
@@ -132,24 +136,54 @@
 <!--End Side bar-->
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal Edit </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                        <label for="inputFirstName">Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" id="inputContact" type="text" placeholder="Enter your last name" />
+                                        <label for="inputContact">Contact</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                              <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" readonly />
+                                <label for="inputEmail">Email address</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                              <input class="form-control" id="inputEvent" type="text" placeholder="Event"/>
+                                <label for="inputEmail">Event</label>
+                            </div>
+<!--                           
+                            <div class="mt-4 mb-0">
+                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">Update</a></div>
+                            </div> -->
+                            <input type="hidden" name="EditIdHidden" id="EditIdHidden">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Update</button>
+                    </div>
+                    </div>
                 </div>
             </div>
-            </div>
+            <!--End Edit Modal-->
             <div id="layoutSidenav_content">
                 <main>
                         <div class="card mb-4">
@@ -188,11 +222,19 @@
                                             <td><?php echo isset($row['EventName']) ? htmlspecialchars($row['EventName']) : 'N/A'; ?></td>
                                             <td>
                                                 <!-- Action buttons (edit/delete) -->
-                                                <button class="btn btn-sm btn-primary">Edit</button>
-                                                <button class="btn btn-sm btn-danger">Delete</button>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                                    Launch demo modal
+                                                <!-- <button class="btn btn-sm btn-primary">Edit</button> -->
+                                                <button id="delete" class="btn btn-sm btn-danger">Delete</button>
+                                                <button type="button" id="EditButton" class="btn btn-sm btn-primary EditButton"
+                                                    data-id="<?php echo $row['ID']; ?>" 
+                                                    data-email="<?php echo $row['Email']; ?>" 
+                                                    data-contact="<?php echo $row['Contact']; ?>" 
+                                                    data-role="<?php echo $row['Role']; ?>" 
+                                                    data-name="<?php echo $row['Name']; ?>"  
+                                                    data-toggle="modal" data-target="#exampleModalCenter">
+                                                    Edit
                                                     </button>
+
+                                                   
                                             </td>
                                         </tr>
                                     <?php 
@@ -219,19 +261,41 @@
                     </div>
                 </main>
             </div>
-             <footer class="py-4 bg-light mt-auto ">
-                        <div class="container-fluid px-4">
-                            <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                                <div>
-                                    <a href="#">Privacy Policy</a>
-                                    &middot;
-                                    <a href="#">Terms &amp; Conditions</a>
-                                </div>
-                            </div>
+          <footer class="py-4 bg-light mt-auto ">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
                         </div>
-                    </footer>
+                    </div>
+                </div>
+            </footer>
         </div>
+        <<script>
+            $(document).ready(function() {
+                $('.EditButton').click(function() {
+                    var id = $(this).data('id');
+                    var email = $(this).data('email');
+                    var contact = $(this).data('contact');
+                    var role = $(this).data('role');
+                    var name = $(this).data('name');
+
+                    // Set values in hidden inputs or modal inputs if needed
+                    $('#EditIdHidden').val(id);
+                    $('#inputEmail').val(email);
+                    $('#inputContact').val(contact);
+                    $('#inputEvent').val(role);
+                    $('#inputFirstName').val(name);
+                });
+            });
+        </script>
+
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
