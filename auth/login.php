@@ -10,7 +10,7 @@ include __DIR__ . '/../includes/header.php';
         <h4 class="text-center"> Login Here</h4>
         <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control"  name="Lemail" placeholder="Enter your email" required>
+        <input type="text" class="form-control"  name="Lemail" placeholder="Enter your User or email" required>
         </div>
 
         <div class="mb-3">
